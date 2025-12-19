@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eHack | Learn. Practice. Defend.</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Theme -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: '#0b0f14',
+            panel: '#111827',
+            primary: '#38bdf8',
+            secondary: '#22c55e',
+            muted: '#9ca3af'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-background text-gray-200 font-sans">
+
+  <!-- NAVBAR -->
+  <nav class="flex items-center justify-between px-8 py-6 border-b border-gray-800">
+    <h1 class="text-2xl font-bold text-primary">eHack</h1>
+    <div class="space-x-6">
+      <a href="#" class="text-muted hover:text-primary">Features</a>
+      <a href="#" class="text-muted hover:text-primary">Blog</a>
+      <a href="#" class="text-muted hover:text-primary">Login</a>
+      <a href="#" class="bg-primary text-black px-4 py-2 rounded-lg font-medium hover:opacity-90">
+        Get Started
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="text-center py-24 px-6">
+    <h2 class="text-5xl font-extrabold mb-6">
+      Learn Cybersecurity the <span class="text-primary">Right Way</span>
+    </h2>
+    <p class="text-muted max-w-2xl mx-auto mb-10">
+      eHack is an ethical cybersecurity learning platform designed to teach
+      fundamentals, web security, Linux, and CTF skills through guided lessons
+      and safe hands-on labs.
+    </p>
+    <div class="space-x-4">
+      <a href="#" class="bg-primary text-black px-6 py-3 rounded-lg font-semibold hover:opacity-90">
+        Start Learning
+      </a>
+      <a href="#" class="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-black transition">
+        View Curriculum
+      </a>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="py-20 px-8 bg-panel">
+    <h3 class="text-3xl font-bold text-center mb-14">What You Will Learn</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      
+      <div class="p-6 rounded-xl border border-gray-800 hover:border-primary transition">
+        <h4 class="text-xl font-semibold mb-3 text-primary">Fundamentals</h4>
+        <p class="text-muted">
+          Security principles, ethics, threat models, and defensive thinking.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl border border-gray-800 hover:border-primary transition">
+        <h4 class="text-xl font-semibold mb-3 text-primary">Linux & Networking</h4>
+        <p class="text-muted">
+          Linux basics, TCP/IP, ports, protocols, and system security.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl border border-gray-800 hover:border-primary transition">
+        <h4 class="text-xl font-semibold mb-3 text-primary">Web Security</h4>
+        <p class="text-muted">
+          XSS, SQL Injection, CSRF, authentication flaws — safely simulated.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl border border-gray-800 hover:border-primary transition">
+        <h4 class="text-xl font-semibold mb-3 text-primary">CTF Labs</h4>
+        <p class="text-muted">
+          Beginner-friendly challenges with hints, scoring, and write-ups.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="py-20 px-8">
+    <h3 class="text-3xl font-bold text-center mb-14">How eHack Works</h3>
+
+    <div class="flex flex-col md:flex-row justify-center items-center gap-10 text-center">
+      <div>
+        <div class="text-4xl font-bold text-primary mb-2">1</div>
+        <p class="text-muted">Learn concepts step by step</p>
+      </div>
+      <div>
+        <div class="text-4xl font-bold text-primary mb-2">2</div>
+        <p class="text-muted">Practice in safe labs</p>
+      </div>
+      <div>
+        <div class="text-4xl font-bold text-primary mb-2">3</div>
+        <p class="text-muted">Earn badges & track progress</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETHICAL DISCLAIMER -->
+  <section class="py-16 px-8 bg-panel">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl font-semibold mb-4 text-secondary">Ethical Use Notice</h3>
+      <p class="text-muted">
+        eHack is strictly for educational purposes. All labs are simulated in
+        controlled environments. Misuse of knowledge outside legal and ethical
+        boundaries is strongly discouraged.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 px-8 border-t border-gray-800 text-center text-muted">
+    © 2025 eHack. Learn. Practice. Defend.
+  </footer>
+
+</body>
+</html>
+

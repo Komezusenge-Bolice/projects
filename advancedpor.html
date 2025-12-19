@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOMEZUSENGE Bolice - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s forwards 0.2s;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #4b5563;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s forwards 0.8s;
+        }
+
+        nav a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1d4ed8;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .hero img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero-text {
+            max-width: 500px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            color: #4b5563;
+        }
+
+        section {
+            margin-top: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .skills, .projects, .achievements {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .skill-item, .project-item, .achievement-item {
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-item:hover, .project-item:hover, .achievement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Skills Chart */
+        .skill-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-bar {
+            background-color: #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 20px;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background-color: #2563eb;
+            width: 0%;
+            border-radius: 8px;
+            transition: width 1.5s ease-in-out;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: #2563eb;
+            color: #fff;
+            border-radius: 8px;
+            transition: 0.3s;
+            margin-top: 1rem;
+        }
+
+        .button:hover {
+            background-color: #1d4ed8;
+        }
+
+        @media(max-width: 768px){
+            nav {
+                flex-direction: column;
+            }
+            .hero {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>KOMEZUSENGE Bolice</h1>
+        <p>Developer | Cybersecurity Enthusiast | Hackathon Participant</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="hero">
+            <img src="https://via.placeholder.com/180" alt="Profile Picture">
+            <div class="hero-text">
+                <h2>Hello, I'm Bolice</h2>
+                <p>I am a passionate developer and cybersecurity enthusiast from Rwanda. I specialize in Python, C, C++, Ruby, and ethical hacking. I participate in hackathons and CTF competitions to continually sharpen my skills and solve challenging problems.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skill-chart">
+                <div class="skill-item">
+                    <strong>Python</strong>
+                    <div class="skill-bar"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <strong>C / C++</strong>
+                    <div class="skill-bar"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <strong>Ruby</strong>
+                    <div class="skill-bar"><div class="skill-bar-fill" style="width: 70%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <strong>Cybersecurity / Penetration Testing</strong>
+                    <div class="skill-bar"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project-item">
+                    <img src="https://via.placeholder.com/400x180" alt="Project Screenshot">
+                    <h3>Student Marks Management System</h3>
+                    <p>Python system handling multiple student records using flexible function parameters (**kwargs), allowing dynamic input and structured output.</p>
+                </div>
+                <div class="project-item">
+                    <img src="https://via.placeholder.com/400x180" alt="Project Screenshot">
+                    <h3>Email Form Validation System</h3>
+                    <p>Front-end and back-end system using JavaScript and PHP to securely validate and store user inputs.</p>
+                </div>
+                <div class="project-item">
+                    <img src="https://via.placeholder.com/400x180" alt="Project Screenshot">
+                    <h3>Penetration Testing Toolkit</h3>
+                    <p>Scripts integrating Nmap, Nikto, and Social Engineering Toolkit for analyzing network security.</p>
+                </div>
+                <div class="project-item">
+                    <img src="https://via.placeholder.com/400x180" alt="Project Screenshot">
+                    <h3>Automation Scripts</h3>
+                    <p>Python and Bash scripts for automating network configurations and system tasks on Linux.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <div class="achievements">
+                <div class="achievement-item">Google CTF Certificate</div>
+                <div class="achievement-item">HackTheBox Advent of Cyber Participant & Certificate</div>
+                <div class="achievement-item">RCA Hackathon Participant</div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:komezusengebolice@gmail.com">komezusengebolice@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/komezusenge-bolice-0b8280380/" target="_blank">linkedin.com/in/komezusenge-bolice-0b8280380/</a></p>
+            <a href="mailto:komezusengebolice@gmail.com" class="button">Get in Touch</a>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2025 KOMEZUSENGE Bolice. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Fade-in sections on scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Animate skill bars
+        const skillBars = document.querySelectorAll('.skill-bar-fill');
+        window.addEventListener('scroll', () => {
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if(rect.top < window.innerHeight){
+                    bar.style.width = bar.style.width; // triggers transition
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
