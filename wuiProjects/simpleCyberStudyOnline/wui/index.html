@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Handler System</title>
+
+    <link rel="icon" href="favicon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/573612c4cd.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* ---------- Global Reset ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef2f7, #f9fbfd);
+            display: flex;
+        }
+
+        /* ---------- Sidebar Navigation ---------- */
+        nav {
+            width: 220px;
+            background: #ffffff;
+            box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
+            padding: 40px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+        }
+
+        nav a {
+            display: block;
+            padding: 14px 30px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background: #f1f5f9;
+            color: #2563eb;
+        }
+
+        /* ---------- Main Area ---------- */
+        main {
+            margin-left: 220px;
+            padding: 60px 80px;
+            width: 100%;
+        }
+
+        /* ---------- Hero Section ---------- */
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 i {
+            color: #2563eb;
+            margin-right: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #475569;
+        }
+
+        /* ---------- Content Card ---------- */
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card h3 {
+            font-size: 26px;
+            color: #1e293b;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .features p {
+            font-size: 17px;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .features i {
+            color: #2563eb;
+            margin-right: 8px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 768px) {
+            nav {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <nav>
+        <a href="#">About</a>
+        <a href="services.html">Services</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+        <a href="#">Contact</a>
+        <a href="#">FAQ</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <h1><i class="fas fa-graduation-cap"></i>Marks Handler System</h1>
+            <p>A secure and efficient platform for managing academic performance</p>
+        </section>
+
+        <section class="card">
+            <h3><i class="fas fa-cogs"></i> What We Do</h3>
+
+            <div class="features">
+                <p><i class="fas fa-user-graduate"></i> Manage student marks efficiently and accurately.</p>
+                <p><i class="fas fa-bell"></i> Real-time updates and notifications for students and teachers.</p>
+                <p><i class="fas fa-chart-line"></i> Detailed performance reports and analytics.</p>
+                <p><i class="fas fa-lock"></i> Secure data handling with access control and encryption.</p>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

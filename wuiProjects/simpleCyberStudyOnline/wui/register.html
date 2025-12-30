@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/573612c4cd.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    body,html {
+        background-color: #f0f0f0;
+        margin: 105px;
+    }
+    .register{
+        background-color: #ffffff;
+        width: 300px;
+        padding: 20px;
+        border: solid 5px #ddd ;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin: auto;
+        font-family: Arial, sans-serif;
+    }
+    .register h2{
+        text-align: center;
+        color: #333;
+    }
+    .register label{
+        font-size: 16px;
+        color: #555;
+    }
+    .register input[type="text"], .register input[type="email"], .register input[type="password"]{
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; 
+    }
+</style>
+<body>
+    <!--add many icons for this form and remember to add a role selection (teacher or student), password comfiramtion twice-->
+    <div class="register">
+        <form action="#">
+            <h2>Register</h2>
+            <label for="username">Username:<i class="fas fa-user"></i></label><br>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="email">Email:<i class="fas fa-envelope"></i></label><br>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="password">Password:<i class="fas fa-lock"></i></label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <label for="confirm_password">Confirm Password:<i class="fas fa-lock"></i></label><br>
+            <input type="password" id="confirm_password" name="confirm_password"><br><br>
+            <input type="submit" value="Register">
+
+        </form>
+    
+</body>
+</html>

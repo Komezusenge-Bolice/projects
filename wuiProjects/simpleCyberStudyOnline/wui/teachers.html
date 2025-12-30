@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard | Marks Handler</title>
+
+    <script src="https://kit.fontawesome.com/573612c4cd.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* ---------- Reset ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f9;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ---------- Sidebar ---------- */
+        .sidebar {
+            width: 240px;
+            background: #ffffff;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.08);
+            padding: 30px 0;
+            position: fixed;
+            height: 100%;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1e293b;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 14px 30px;
+            color: #334155;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: #e2e8f0;
+        }
+
+        /* ---------- Main ---------- */
+        .main {
+            margin-left: 240px;
+            padding: 40px 60px;
+            width: 100%;
+        }
+
+        /* ---------- Top Bar ---------- */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .topbar h1 {
+            font-size: 28px;
+            color: #1e293b;
+        }
+
+        .profile {
+            color: #475569;
+            font-size: 16px;
+        }
+
+        /* ---------- Card ---------- */
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-header h3 {
+            color: #1e293b;
+            font-size: 22px;
+        }
+
+        .add-btn {
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .add-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* ---------- Table ---------- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f1f5f9;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        th {
+            color: #475569;
+            font-weight: 600;
+        }
+
+        td {
+            color: #334155;
+        }
+
+        /* ---------- Actions ---------- */
+        .actions button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .edit {
+            color: #2563eb;
+        }
+
+        .delete {
+            color: #dc2626;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Teacher Panel</h2>
+        <a href="#"><i class="fas fa-table"></i> Marks</a>
+        <a href="#"><i class="fas fa-users"></i> Students</a>
+        <a href="#"><i class="fas fa-chart-bar"></i> Reports</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <div class="topbar">
+            <h1>Marks Dashboard</h1>
+            <div class="profile">
+                <i class="fas fa-user"></i> Teacher
+            </div>
+        </div>
+
+        <section class="card">
+            <div class="card-header">
+                <h3>Student Marks</h3>
+                <button class="add-btn">
+                    <i class="fas fa-plus"></i> Add Marks
+                </button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Subject</th>
+                        <th>Marks</th>
+                        <th>Grade</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Mathematics</td>
+                        <td>85</td>
+                        <td>A</td>
+                        <td class="actions">
+                            <button class="edit"><i class="fas fa-edit"></i></button>
+                            <button class="delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Physics</td>
+                        <td>72</td>
+                        <td>B</td>
+                        <td class="actions">
+                            <button class="edit"><i class="fas fa-edit"></i></button>
+                            <button class="delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+</body>
+</html>
