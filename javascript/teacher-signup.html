@@ -3,72 +3,168 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Teacher Sign Up</title>
+  <title>Teacher Sign Up - Marks Handler</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:#f0f2f5;display:flex;align-items:center;justify-content:center;padding:24px}
-    .card{background:#fff;padding:28px;border-radius:10px;max-width:560px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,0.07)}
-    h1{margin-bottom:6px;font-size:22px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .form-group{margin-bottom:12px}
-    label{display:block;font-weight:600;font-size:13px;margin-bottom:6px}
-    input,select{width:100%;padding:10px;border:2px solid #e6e6e6;border-radius:6px}
-    button{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer;font-weight:700}
-    .back{display:block;margin-top:12px;color:#667eea;text-decoration:none}
-    @media(max-width:600px){.grid{grid-template-columns:1fr}}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .signup-container { background: white; border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); overflow: hidden; max-width: 500px; width: 100%; animation: slideUp 0.5s ease-out; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .signup-header { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 40px 30px; text-align: center; color: white; }
+    .signup-header i { font-size: 48px; margin-bottom: 15px; display: block; }
+    .signup-header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .signup-header p { font-size: 14px; opacity: 0.9; }
+    .signup-body { padding: 40px 30px; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-size: 13px; font-weight: 600; color: #2c3e50; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .input-wrapper { position: relative; display: flex; align-items: center; }
+    input { width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 6px; font-size: 14px; transition: all 0.3s ease; background-color: #f8f9fa; }
+    input:focus { outline: none; border-color: #f5576c; background-color: white; box-shadow: 0 0 0 3px rgba(245, 87, 108, 0.1); }
+    .password-toggle { background: none; border: none; color: #f5576c; font-size: 16px; cursor: pointer; position: absolute; right: 12px; padding: 8px; }
+    .password-toggle:hover { color: #e74c3c; }
+    .error { border-color: #e74c3c !important; background-color: #fff5f5 !important; }
+    .error-message { color: #e74c3c; font-size: 12px; margin-top: 5px; display: none; }
+    .error-message.show { display: block; }
+    .form-group.error .error-message { display: block; }
+    .strength-meter { height: 4px; background: #e0e0e0; border-radius: 2px; margin-top: 8px; overflow: hidden; }
+    .strength-bar { height: 100%; width: 0%; transition: all 0.3s ease; }
+    .strength-weak { background: #e74c3c; width: 33%; }
+    .strength-medium { background: #f39c12; width: 66%; }
+    .strength-strong { background: #27ae60; width: 100%; }
+    .signup-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3); }
+    .signup-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4); }
+    .signup-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .back-link { text-align: center; margin-top: 20px; }
+    .back-link a { color: #f5576c; text-decoration: none; font-size: 13px; }
+    .back-link a:hover { text-decoration: underline; }
+    .divider { text-align: center; margin: 20px 0; color: #999; font-size: 13px; }
+    .login-link { text-align: center; margin-top: 15px; font-size: 13px; color: #666; }
+    .login-link a { color: #f5576c; text-decoration: none; font-weight: 600; }
+    .success-message { background: #d4edda; color: #155724; padding: 12px 15px; border-radius: 6px; border-left: 4px solid #28a745; margin-bottom: 20px; display: none; }
+    .success-message.show { display: block; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1><i class="fas fa-chalkboard-teacher"></i> Teacher Sign Up</h1>
-    <p>Create your teacher account to add marks and manage students.</p>
-    <form id="teacherForm">
-      <div class="grid">
+  <div class="signup-container">
+    <div class="signup-header">
+      <i class="fas fa-chalkboard-user"></i>
+      <h1>Teacher Sign Up</h1>
+      <p>Create Your Account</p>
+    </div>
+    <div class="signup-body">
+      <div class="success-message" id="successMessage">Account created successfully! Redirecting to login...</div>
+      <form id="teacherForm">
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input id="name" required>
+          <input type="text" id="name" placeholder="Enter your full name" required>
+          <span class="error-message">Name is required</span>
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" type="email" required>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+          <span class="error-message">Please enter a valid email</span>
         </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="password" placeholder="Create a password" required>
+            <button type="button" class="password-toggle" id="toggle1"><i class="fas fa-eye"></i></button>
+          </div>
+          <div class="strength-meter"><div class="strength-bar" id="strengthBar"></div></div>
+          <span class="error-message">Password is required</span>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+            <button type="button" class="password-toggle" id="toggle2"><i class="fas fa-eye"></i></button>
+          </div>
+          <span class="error-message">Passwords must match</span>
+        </div>
+        <button type="submit" class="signup-btn"><i class="fas fa-user-plus"></i> Create Account</button>
+      </form>
+      <div class="login-link">
+        Already have an account? <a href="teacher-login.html">Login here</a>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input id="password" type="password" required>
+      <div class="back-link">
+        <a href="index.html">← Back to Home</a>
       </div>
-      <div class="form-group">
-        <label for="schoolId">School ID (optional)</label>
-        <input id="schoolId" placeholder="Enter school id if available">
-      </div>
-      <button type="submit">Create Account</button>
-    </form>
-    <a class="back" href="teacher-login.html">← Back to Login</a>
+    </div>
   </div>
 
   <script>
-    document.getElementById('teacherForm').addEventListener('submit', async (e) => {
+    const form = document.getElementById('teacherForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const strengthBar = document.getElementById('strengthBar');
+    const toggle1 = document.getElementById('toggle1');
+    const toggle2 = document.getElementById('toggle2');
+
+    // Password visibility toggle
+    function togglePassword(input, btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const type = input.type === 'password' ? 'text' : 'password';
+        input.type = type;
+        btn.querySelector('i').classList.toggle('fa-eye');
+        btn.querySelector('i').classList.toggle('fa-eye-slash');
+      });
+    }
+
+    togglePassword(passwordInput, toggle1);
+    togglePassword(confirmPasswordInput, toggle2);
+
+    // Password strength meter
+    passwordInput.addEventListener('input', () => {
+      const pwd = passwordInput.value;
+      let strength = 'weak';
+      if (pwd.length >= 8 && /[A-Z]/.test(pwd) && /[0-9]/.test(pwd)) strength = 'strong';
+      else if (pwd.length >= 6) strength = 'medium';
+      strengthBar.className = 'strength-bar strength-' + strength;
+    });
+
+    // Form validation
+    function validateForm() {
+      let isValid = true;
+      // Name validation
+      if (!nameInput.value.trim()) { nameInput.parentElement.classList.add('error'); isValid = false; } else { nameInput.parentElement.classList.remove('error'); }
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) { emailInput.parentElement.classList.add('error'); isValid = false; } else { emailInput.parentElement.classList.remove('error'); }
+      // Password validation
+      if (!passwordInput.value) { passwordInput.parentElement.parentElement.classList.add('error'); isValid = false; } else { passwordInput.parentElement.parentElement.classList.remove('error'); }
+      // Password match validation
+      if (passwordInput.value !== confirmPasswordInput.value) { confirmPasswordInput.parentElement.parentElement.classList.add('error'); isValid = false; } else { confirmPasswordInput.parentElement.parentElement.classList.remove('error'); }
+      return isValid;
+    }
+
+    // Clear error on input
+    [nameInput, emailInput, passwordInput, confirmPasswordInput].forEach(input => {
+      input.addEventListener('input', () => {
+        input.parentElement.parentElement?.classList.remove('error');
+        input.parentElement?.classList.remove('error');
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
-      const schoolId = document.getElementById('schoolId').value.trim() || null;
-      if (!name || !email) return alert('Name and email required');
-      const payload = { name, email, password, schoolId };
+      if (!validateForm()) return;
+      const payload = { name: nameInput.value.trim(), email: emailInput.value.trim(), password: passwordInput.value };
       try {
-        const res = await fetch('/api/teachers', { method: 'POST', headers: { 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
+        const res = await fetch('/api/teachers', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
         if (!res.ok) throw new Error('server');
-        const data = await res.json();
-        alert('Teacher account created. Please login.');
-        window.location.href = 'teacher-login.html';
+        const successMsg = document.getElementById('successMessage');
+        successMsg.classList.add('show');
+        setTimeout(() => { window.location.href = 'teacher-login.html'; }, 2000);
       } catch (err) {
-        // fallback: save locally
-        const teachers = JSON.parse(localStorage.getItem('teachers')||'[]');
-        const id = 'T' + Date.now();
-        teachers.push({ id, name, email, password, schoolId });
+        const teachers = JSON.parse(localStorage.getItem('teachers') || '[]');
+        teachers.push({ id: 'T' + Date.now(), name: payload.name, email: payload.email, password: payload.password });
         localStorage.setItem('teachers', JSON.stringify(teachers));
-        alert('Offline: account saved locally. Please login.');
-        window.location.href = 'teacher-login.html';
+        const successMsg = document.getElementById('successMessage');
+        successMsg.classList.add('show');
+        setTimeout(() => { window.location.href = 'teacher-login.html'; }, 2000);
       }
     });
   </script>
