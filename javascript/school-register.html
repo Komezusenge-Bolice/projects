@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Register School</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+    .card{background:#fff;padding:28px;border-radius:10px;max-width:480px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,0.15)}
+    h1{margin-bottom:6px;font-size:22px}
+    p{color:#666;margin-bottom:18px}
+    .form-group{margin-bottom:14px}
+    label{display:block;font-weight:600;font-size:13px;margin-bottom:6px}
+    input{width:100%;padding:10px 12px;border:2px solid #e6e6e6;border-radius:6px}
+    button{background:#f5576c;color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer;font-weight:700}
+    .back{display:block;margin-top:12px;color:#f5576c;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1><i class="fas fa-school"></i> Register School</h1>
+    <p>Create a school account to manage teachers and students.</p>
+    <form id="schoolForm">
+      <div class="form-group">
+        <label for="schoolName">School Name</label>
+        <input id="schoolName" name="schoolName" required placeholder="e.g. Greenfield High">
+      </div>
+      <button type="submit">Register School</button>
+    </form>
+    <a class="back" href="index.html">← Back to Home</a>
+  </div>
+
+  <script>
+    document.getElementById('schoolForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('schoolName').value.trim();
+      if (!name) return alert('Enter a school name');
+      try {
+        const res = await fetch('/api/schools', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name }) });
+        if (!res.ok) throw new Error('server');
+        const data = await res.json();
+        alert('School registered: ' + (data.name || name));
+        window.location.href = 'teacher-signup.html';
+      } catch (err) {
+        // fallback: save to localStorage
+        const schools = JSON.parse(localStorage.getItem('schools')||'[]');
+        const id = 'SCH' + Date.now();
+        schools.push({ id, name, createdAt: new Date().toISOString() });
+        localStorage.setItem('schools', JSON.stringify(schools));
+        alert('Offline: school saved locally');
+        window.location.href = 'teacher-signup.html';
+      }
+    });
+  </script>
+</body>
+</html>

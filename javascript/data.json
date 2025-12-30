@@ -1,0 +1,42 @@
+{
+  "schools": [
+    {
+      "id": "SCH1767089033001",
+      "name": "Test School",
+      "createdAt": "2025-12-30T10:03:53.002Z"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "T1767089033035",
+      "name": "Alice",
+      "email": "alice@example.com",
+      "password": "pass",
+      "schoolId": null,
+      "createdAt": "2025-12-30T10:03:53.035Z"
+    }
+  ],
+  "students": [
+    {
+      "id": "S100",
+      "name": "Bob",
+      "email": "S100@school.local",
+      "password": "pass",
+      "class": "",
+      "createdAt": "2025-12-30T10:03:53.063Z"
+    }
+  ],
+  "marks": [
+    {
+      "id": 1767089033093,
+      "studentId": "S100",
+      "studentName": "Bob",
+      "subject": "Math",
+      "marks": 88,
+      "maxMarks": 100,
+      "examType": "Midterm",
+      "remarks": "",
+      "date": "2025-12-30T10:03:53.094Z"
+    }
+  ]
+}

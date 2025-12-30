@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Student Sign Up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body{font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;background:#f7fafc;display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{background:#fff;padding:28px;border-radius:10px;max-width:520px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,0.06)}
+    h1{margin-bottom:6px;font-size:22px}
+    .form-group{margin-bottom:12px}
+    label{display:block;font-weight:600;font-size:13px;margin-bottom:6px}
+    input{width:100%;padding:10px;border:2px solid #e6e6e6;border-radius:6px}
+    button{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer;font-weight:700}
+    .back{display:block;margin-top:12px;color:#667eea;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1><i class="fas fa-user-graduate"></i> Student Sign Up</h1>
+    <p>Create your student account to view marks and performance.</p>
+    <form id="studentForm">
+      <div class="form-group">
+        <label for="studentId">Student ID / Roll No</label>
+        <input id="studentId" required placeholder="e.g. S12345">
+      </div>
+      <div class="form-group">
+        <label for="studentName">Full Name</label>
+        <input id="studentName" required>
+      </div>
+      <div class="form-group">
+        <label for="className">Class</label>
+        <input id="className" placeholder="e.g. 10A">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password">
+      </div>
+      <button type="submit">Create Account</button>
+    </form>
+    <a class="back" href="student-login.html">← Back to Login</a>
+  </div>
+
+  <script>
+    document.getElementById('studentForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('studentId').value.trim();
+      const name = document.getElementById('studentName').value.trim();
+      const className = document.getElementById('className').value.trim();
+      const password = document.getElementById('password').value || '';
+      if (!id || !name) return alert('ID and name required');
+      const payload = { id, name, password, className };
+      try {
+        const res = await fetch('/api/students', { method: 'POST', headers: { 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
+        if (!res.ok) throw new Error('server');
+        const data = await res.json();
+        alert('Student account created. Please login.');
+        window.location.href = 'student-login.html';
+      } catch (err) {
+        const students = JSON.parse(localStorage.getItem('studentsDatabase')||'[]');
+        students.push({ id, name, email: id+'@school.local', password, class: className });
+        localStorage.setItem('studentsDatabase', JSON.stringify(students));
+        alert('Offline: student saved locally. Please login.');
+        window.location.href = 'student-login.html';
+      }
+    });
+  </script>
+</body>
+</html>
