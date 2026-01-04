@@ -1,10 +1,14 @@
-function Message() {
-    const brand = "Bolice";
-    const model = "X1";
-
-    return (
-        <h1>This is {brand} {model}</h1>
+function Button(){
+    return(
+        <button>I'm a button</button>
     );
 }
-
-export default Message;
+export default function MyApp(){
+    return(
+        <div>
+      
+            <h1>Welcome to my app</h1>
+            <Button />
+        </div>
+    );
+}
