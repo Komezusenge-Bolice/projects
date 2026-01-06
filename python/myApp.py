@@ -133,4 +133,17 @@ import pandas as pd
 # for word in bolice:
 #    print(word)
 ##x = lambda a: a + 10
-# print(x
+# pri
+import numpy as np
+
+
+def degree_to_farenheit(Tc):
+    ## convert celsius to franeight
+    Tf = (9 / 5) * Tc + 32
+    return Tf
+
+
+Tc = float(input("enter degree celicius temperature: "))
+print(
+    f"{Tc} degree celicius is equal to {degree_to_farenheit(Tc):.2f} degree farenheit"
+)

@@ -1,16 +1,14 @@
-import { Fragment } from "react";
-function ListGroup() {
+const Names = ["bolice", "akisa", "robert"];
+function NamesPassedInAsAListGroup() {
   return (
     <>
-      <h1>Group List</h1>
-      <ul className="list-group">
-        <li className="list-group-item">An item</li>
-        <li className="list-group-item">A second item</li>
-        <li className="list-group-item">A third item</li>
-        <li className="list-group-item">A fourth item</li>
-        <li className="list-group-item">And a fifth one</li>
+      <h1>Names passed in as list grouups.</h1>
+      <ul className="Names-group">
+        {NamesPassedInAsAListGroup.map((Name) => {
+          <li>{NamesPassedInAsAListGroup}</li>;
+        })}
       </ul>
     </>
   );
 }
-export default ListGroup;
+export default Names;

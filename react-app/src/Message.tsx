@@ -1,16 +1,7 @@
-function MyButton() {
-  return (
-    <button>
-      I'm a button
-    </button>
-  );
+const name = "Akisa";
+
+function Message() {
+  return <h1>Hello {name}</h1>;
 }
 
-export default function Message() {
-  return (
-    <div>
-      <h1>Welcome to my app</h1>
-      <MyButton />
-    </div>
-  );
-}
+export default Message;

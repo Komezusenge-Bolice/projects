@@ -1,17 +1,19 @@
 #include <stdio.h>
-
 int main()
 {
-    int a, b = 5;
-    int i;
+    int arr[5] = {10, 20, 30, 40, 50};
+    int *ptr = arr;
 
-    for (a = 1; a <= b; ++a)
+    printf("Address of arr[0]: %p\n", (void *)&arr[0]);
+    printf("Address of arr[1]: %p\n", (void *)&arr[1]);
+    printf("Address of arr[2]: %p\n", (void *)&arr[2]);
+    printf("Address of arr[3]: %p\n", (void *)&arr[3]);
+    printf("Address of arr[4]: %p\n", (void *)&arr[4]);
+
+    printf("\nUsing pointer arithmetic:\n");
+    for (int i = 0; i < 5; i++)
     {
-        for (i = 1; i <= a; ++i)
-        {
-            printf("*");
-        }
-        printf("\n");
+        printf("Address of arr[%d]: %p\n", i, (void *)(ptr + i));
     }
 
     return 0;
